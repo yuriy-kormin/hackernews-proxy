@@ -1,7 +1,8 @@
 FROM python:slim-buster
 
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r /tmp/requirements.txt
+RUN pip3 install --no-cache-dir --upgrade pip && \
+    pip3 install poetry && \
+    poetry install --no-root
 
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
