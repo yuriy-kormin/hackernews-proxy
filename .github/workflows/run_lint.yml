@@ -1,4 +1,4 @@
-name: Run pytest
+name: Run lint
 on: push
 jobs:
   test:
