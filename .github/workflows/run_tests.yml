@@ -10,10 +10,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: 3.11
 
       - name: Install dependencies
-        run: pip install --no-cache-dir -r requirements.txt
+        run: pip install --no-cache-dir -r Docker/www/requirements.txt
 
       - name: Run pytest
         run: pytest
