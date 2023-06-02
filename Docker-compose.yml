@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  www:
+    build:
+      context: ./Docker/www
+    expose:
+      - 5000
+    volumes:
+      - ./app/:/app/:ro
+    working_dir: /app
+
+  nginx:
+    build:
+      context: ./Docker/nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - www
