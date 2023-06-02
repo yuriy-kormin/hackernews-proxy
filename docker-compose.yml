@@ -3,7 +3,8 @@ version: "3.9"
 services:
   www:
     build:
-      context: ./Docker/www
+      context: .
+      dockerfile: ./Docker/www/Dockerfile
     expose:
       - 5000
     volumes:
