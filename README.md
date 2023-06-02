@@ -1,3 +1,4 @@
+[![Run pytest](https://github.com/yuriy-kormin/hackernews-proxy/actions/workflows/run_tests.yml/badge.svg)](https://github.com/yuriy-kormin/hackernews-proxy/actions/workflows/run_tests.yml)
 ## Hackernews proxy
 
 It's my solution for code challenge by Ivelum [https://github.com/ivelum/job/blob/master/challenges/python.md](https://github.com/ivelum/job/blob/master/challenges/python.md)
