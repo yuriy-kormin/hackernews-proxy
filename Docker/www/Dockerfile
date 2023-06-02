@@ -1,6 +1,5 @@
 FROM python:slim-buster
 
-COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install --no-cache-dir --upgrade pip && \
     pip3 install poetry && \
     poetry install --no-root
