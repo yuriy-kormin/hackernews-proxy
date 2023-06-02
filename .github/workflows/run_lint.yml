@@ -1,4 +1,4 @@
-name: Run lint
+name: Linter
 on: push
 jobs:
   test:
