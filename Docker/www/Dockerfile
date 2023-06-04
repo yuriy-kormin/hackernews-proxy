@@ -9,4 +9,4 @@ RUN pip3 install --no-cache-dir --upgrade pip && \
     poetry config virtualenvs.create false && \
     poetry install --no-dev --no-root
 
-CMD ["gunicorn",  "app:app", "-w", "4", "--bind", "0.0.0.0:5000"]
+CMD ["gunicorn",  "app.app:app", "-w", "4", "--bind", "0.0.0.0:5000"]
