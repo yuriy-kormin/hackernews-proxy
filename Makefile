@@ -3,6 +3,6 @@ install:
 install-dev:
 	poetry install
 test:
-	poetry run pytest
+	poetry run pytest -s
 lint:
 	poetry run flake8 app
