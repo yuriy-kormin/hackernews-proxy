@@ -2,7 +2,7 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 from flask import Response
-from config import ORIGIN_URL
+from app.config import ORIGIN_URL
 
 
 def get_soup_or_response(url_path):

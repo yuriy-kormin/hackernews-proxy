@@ -1,6 +1,6 @@
 import re
 from urllib.parse import urlparse, urlunparse
-from config import WORD_LENGTH, ORIGIN_URL, PROXY_URL
+from app.config import WORD_LENGTH, ORIGIN_URL, PROXY_URL
 ORIGIN_NETLOC = urlparse(ORIGIN_URL).netloc
 
 

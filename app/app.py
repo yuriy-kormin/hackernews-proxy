@@ -1,7 +1,7 @@
 from flask import Flask, request
 from bs4 import BeautifulSoup
-from parser import process_tags, update_symlinks
-from url import get_soup_or_response
+from app.parser import process_tags, update_symlinks
+from app.url import get_soup_or_response
 
 app = Flask(__name__)
 

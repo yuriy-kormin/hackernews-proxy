@@ -8,3 +8,10 @@ It's my solution for code challenge by Ivelum [https://github.com/ivelum/job/blo
 The proxy processes pages from the site  [Hacker News](https://news.ycombinator.com/) and uses the [BeautifulSoup library](https://pypi.org/project/beautifulsoup4/) to add a ™ sign after each word on the page, which length is equal to setted in configuration
 (6 by default).
 
+## INSTALLATION
+
+##### Docker
+
+    git clone https://github.com/yuriy-kormin/hackernews-proxy.git
+    cd hackernews-proxy
+    docker compose up --build

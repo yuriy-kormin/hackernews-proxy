@@ -1,9 +1,13 @@
 [tool.poetry]
-name = "hackernews"
+name = "hackernews-proxy"
 version = "0.1.0"
 description = "Solution for code hallenge by Ivelum"
 authors = ["yuriy.kormin <yuriy.kormin@gmail.com>"]
 readme = "README.md"
+packages = [
+  {include = "app"}
+]
+
 
 [tool.poetry.dependencies]
 python = "^3.11"

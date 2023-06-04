@@ -9,12 +9,14 @@ services:
       - 5000
     volumes:
       - ./app/:/app/:ro
-    working_dir: /app
+    working_dir: /
 
   nginx:
     build:
       context: ./Docker/nginx
+    env_file:
+      - .env
     ports:
-      - "80:80"
+      - "${NGINX_PORT}:80"
     depends_on:
       - www
