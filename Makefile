@@ -7,4 +7,4 @@ test:
 lint:
 	poetry run flake8 app
 start:
-	poetry run flask --app app.app run
+	poetry run quart --app app.app run

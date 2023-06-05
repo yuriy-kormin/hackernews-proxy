@@ -1,16 +1,16 @@
-from flask import Flask, request
+from quart import Quart, request
 from bs4 import BeautifulSoup
 from app.parser import process_tags, update_symlinks
 from app.url import get_soup_or_response
 
-app = Flask(__name__)
+app = Quart(__name__)
 
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
-def proxy(path):
+async def proxy(path):
     full_path = path + '?' + request.query_string.decode()
-    soup = get_soup_or_response(full_path)
+    soup = await get_soup_or_response(full_path)
     if isinstance(soup, BeautifulSoup):
         process_tags(soup)
         update_symlinks(soup)
