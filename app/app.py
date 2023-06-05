@@ -9,7 +9,8 @@ app = Flask(__name__)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def proxy(path):
-    soup = get_soup_or_response(request.full_path)
+    full_path = path + '?' + request.query_string.decode()
+    soup = get_soup_or_response(full_path)
     if isinstance(soup, BeautifulSoup):
         process_tags(soup)
         update_symlinks(soup)
