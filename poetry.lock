@@ -764,6 +764,25 @@ docs = ["sphinx (>=5.3)", "sphinx-rtd-theme (>=1.0)"]
 testing = ["coverage (>=6.2)", "flaky (>=3.5.0)", "hypothesis (>=5.7.1)", "mypy (>=0.931)", "pytest-trio (>=0.7.0)"]
 
 [[package]]
+name = "pytest-httpx"
+version = "0.22.0"
+description = "Send responses to httpx."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "pytest_httpx-0.22.0-py3-none-any.whl", hash = "sha256:cefb7dcf66a4cb0601b0de05e576cca423b6081f3245e7912a4d84c58fa3eae8"},
+    {file = "pytest_httpx-0.22.0.tar.gz", hash = "sha256:3a82797f3a9a14d51e8c6b7fa97524b68b847ee801109c062e696b4744f4431c"},
+]
+
+[package.dependencies]
+httpx = ">=0.24.0,<0.25.0"
+pytest = ">=6.0,<8.0"
+
+[package.extras]
+testing = ["pytest-asyncio (>=0.20.0,<0.21.0)", "pytest-cov (>=4.0.0,<5.0.0)"]
+
+[[package]]
 name = "quart"
 version = "0.18.4"
 description = "A Python ASGI web microframework with the same API as Flask"
@@ -861,4 +880,4 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "545688d8bfd8c1a30720566826803f1d2a913d6d57186199b31d88354b013cb9"
+content-hash = "ac19035e21586b2d5a3d36c802c5aa821eae42722e2ce42a51fa3e29f42a868d"

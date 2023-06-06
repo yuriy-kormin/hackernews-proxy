@@ -1,6 +1,6 @@
 import pytest
 from app.app import app
-
+# from quart.testing import make_test_client
 
 # @pytest.fixture
 # def client():
@@ -13,11 +13,11 @@ from app.app import app
 
 
 @pytest.fixture
-async def client():
-    async with app.test_client() as client:
-        yield client
+def client():
+    # async with app.test_client() as client:
+    return app.test_client()
 
-@pytest.mark.asyncio
+
 @pytest.fixture
 def get_qa_root_html():
     return tuple(

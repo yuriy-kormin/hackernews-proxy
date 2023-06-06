@@ -1,23 +1,22 @@
-import httpretty
+from pytest_httpx import HTTPXMock
 from app.config import ORIGIN_URL
 import pytest
-from app.app import app
-from quart.testing import QuartClient
 
-# @httpretty.activate(verbose=True)
+
 @pytest.mark.asyncio
-async def test_root_page(client, get_qa_root_html):
+async def test_root_page(
+        client,
+        get_qa_root_html,
+        httpx_mock: HTTPXMock
+):
     origin_page, result_page = get_qa_root_html
-    httpretty.enable()
-    httpretty.register_uri(
-        httpretty.GET, ORIGIN_URL,
-        body=origin_page,
+
+    httpx_mock.add_response(
+        url=ORIGIN_URL,
+        html=origin_page,
+        status_code=200,
     )
-    # async with app.test_client() as client:
     resp = await client.get('/')
     assert resp.status_code == 200
-    assert resp.text == result_page
-
-
-
-
+    resp_data = await resp.get_data(as_text=True)
+    assert resp_data == result_page
