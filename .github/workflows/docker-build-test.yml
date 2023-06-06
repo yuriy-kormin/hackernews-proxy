@@ -7,9 +7,9 @@ jobs:
       - uses: actions/checkout@v3
       - uses: isbang/compose-action@v1.4.1
 
-      - name: docker compose log
-        run: |
-          docker compose logs --since 10m
+      - name: Waiting for docker containers starting up
+        run: sleep 30
+
       - name: Test Connection
         run: |
           http_status=$(curl -o /dev/null -s -w "%{http_code}" http://localhost)
