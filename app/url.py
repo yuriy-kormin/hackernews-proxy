@@ -1,4 +1,3 @@
-import logging
 from urllib.parse import urljoin
 import httpx
 from bs4 import BeautifulSoup
@@ -11,19 +10,20 @@ logger = Logger.with_default_handlers()
 
 async def get_soup_or_response(url_path):
     full_url = urljoin(ORIGIN_URL, url_path)
-    content_type = await get_content(full_url, type='header')
-    content = await get_content(full_url, type='page')
-    print(f'{content_type=}')
-    if 'text/html' in content_type:
-        return BeautifulSoup(content.text, 'lxml')
-    return Response(content.content, content_type=content_type)
+    response = await get_content(full_url)
+    if content_type := is_not_html(response):
+        logger.debug(f'{full_url} is not a html. skip parsing')
+        return Response(response.content, content_type=content_type)
+    logger.debug(f'{full_url} is  html. Process parsing')
+    return BeautifulSoup(response.text, 'lxml')
 
 
-async def get_content(url, type):
+def is_not_html(response):
+    content_type = response.headers.get('Content-Type', '').lower()
+    if 'text/' not in content_type:
+        return content_type
+
+
+async def get_content(url):
     async with httpx.AsyncClient() as client:
-        if type == 'header':
-            response = await client.head(url)
-
-            print(f"{response.headers=}")
-            return response.headers.get('Content-Type', '').lower()
         return await client.get(url)
