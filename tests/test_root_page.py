@@ -21,6 +21,7 @@ async def test_open_root_page(
     resp_data = await resp.get_data(as_text=True)
     assert resp_data == result_page
 
+
 @pytest.mark.asyncio
 async def test_symlink_modificataion(
         client,
