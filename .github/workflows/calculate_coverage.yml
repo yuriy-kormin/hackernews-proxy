@@ -29,7 +29,13 @@ jobs:
       - name: Generate coverage badge
         run: poetry run coverage-badge -f -o .cov/coverage.svg
 
-      - name: Commit and push coverage badge
+      - name: Check coverage badge difference
+        id: check_diff
+        run: |
+          git diff --exit-code --quiet -- coverage.svg || echo "::set-output name=changed::true"
+
+      - name: Commit and push changes
+        if: steps.check_diff.outputs.changed == 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
