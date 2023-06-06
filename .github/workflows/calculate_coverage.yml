@@ -1,8 +1,8 @@
-name: Test and Coverage
+name: Coverage badge generate
 
 on: push
 jobs:
-  test:
+  cov:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +27,7 @@ jobs:
         run: poetry run coverage xml -o .cov/coverage.xml
 
       - name: Generate coverage badge
-        run: coverage-badge -f -o .cov/coverage.svg
+        run: poetry run coverage-badge -f -o .cov/coverage.svg
 
       - name: Commit and push coverage badge
         run: |
