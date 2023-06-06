@@ -1,0 +1,38 @@
+name: Test and Coverage
+
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+          make install-dev
+
+      - name: Run tests with coverage
+        run: poetry run coverage run --source=app -m pytest
+
+      - name: Generate coverage report
+        run: poetry run coverage xml -o .cov/coverage.xml
+
+      - name: Generate coverage badge
+        run: coverage-badge -f -o .cov/coverage.svg
+
+      - name: Commit and push coverage badge
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .cov/
+          git commit -m "Add coverage badge"
+          git push
