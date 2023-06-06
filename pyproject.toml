@@ -16,11 +16,14 @@ lxml = "^4.9.2"
 quart = "^0.18.4"
 httpx = "^0.24.1"
 aiodns = "^3.0.0"
+aiologger = "^0.7.0"
+
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.3.1"
 flake8 = "^6.0.0"
 httpretty = "^1.1.4"
+pytest-asyncio = "^0.21.0"
+pytest = "^7.3.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -29,6 +32,5 @@ build-backend = "poetry.core.masonry.api"
 [tool.pytest.ini_options]
 log_cli = 1
 log_cli_level = "DEBUG"
-pythonpath = [
-  "."
-]
+pythonpath = ["."]
+asyncio_mode = "auto"

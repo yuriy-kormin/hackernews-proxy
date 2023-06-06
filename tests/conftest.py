@@ -2,13 +2,22 @@ import pytest
 from app.app import app
 
 
+# @pytest.fixture
+# def client():
+#     # app.config["TESTING"] = True
+#     return app.test_client()
+# yield client
+# @pytest.mark.asyncio
+# @pytest.fixture
+# async def create_test_app():
+
+
 @pytest.fixture
-def client():
-    app.config["TESTING"] = True
-    with app.test_client() as client:
+async def client():
+    async with app.test_client() as client:
         yield client
 
-
+@pytest.mark.asyncio
 @pytest.fixture
 def get_qa_root_html():
     return tuple(
