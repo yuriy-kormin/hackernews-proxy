@@ -12,8 +12,8 @@ async def proxy(path):
     full_path = path + '?' + request.query_string.decode()
     soup = await get_soup_or_response(full_path)
     if isinstance(soup, BeautifulSoup):
-        await process_tags(soup)
-        await update_symlinks(soup)
+        process_tags(soup)
+        update_symlinks(soup)
         return str(soup)
     return soup
 

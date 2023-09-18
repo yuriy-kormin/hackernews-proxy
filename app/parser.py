@@ -7,7 +7,7 @@ ORIGIN_NETLOC = urlparse(ORIGIN_URL).netloc
 REPLACE_PATTERN = rf'((?:^|\s)\w{{{WORD_LENGTH}}})(?=(\s|$))'
 
 
-async def process_tags(soup):
+def process_tags(soup):
     logger.debug('\t ....processing page data to add sign after....')
     for tag in soup.find_all(
             string=lambda element: len(element) >= WORD_LENGTH):
@@ -16,7 +16,7 @@ async def process_tags(soup):
         )
 
 
-async def update_symlinks(soup):
+def update_symlinks(soup):
     logger.debug('\t ....updating symlink on page....')
     for symlink in soup.find_all('a', href=True):
         parsed_url = urlparse(symlink['href'])
