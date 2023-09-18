@@ -8,7 +8,7 @@ import pytest
 async def test_tags_change(get_qa_root_html):
     orig_html, result = get_qa_root_html
     soup = BeautifulSoup(orig_html, 'lxml')
-    await process_tags(soup)
+    process_tags(soup)
     assert str(soup) == result
 
 @pytest.mark.asyncio
